@@ -281,7 +281,7 @@ export default function Textarea() {
 
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-10">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <div>
               <p className="mt-2 text-gray-400">
@@ -291,7 +291,7 @@ export default function Textarea() {
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             <div className="p-4 rounded-xl bg-gray-800 border border-gray-700 shadow-sm">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-blue-900 rounded-lg">

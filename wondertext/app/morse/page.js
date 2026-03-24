@@ -158,7 +158,7 @@ export default function MorseTablePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+    <div className="pt-16 min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
       <Toaster 
         position="top-right"
         toastOptions={{
@@ -188,7 +188,7 @@ export default function MorseTablePage() {
           </div>
 
           {/* Search and Categories */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <div className="flex flex-col gap-4 mb-10">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
@@ -226,23 +226,23 @@ export default function MorseTablePage() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">
           {/* Morse Code Table - Main Section */}
           <div className="lg:col-span-2">
             {/* Letters */}
             {filteredData.letters.length > 0 && (
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white flex items-center gap-2">
+              <div className="mb-10">
+                <h2 className="text-xl md:text-2xl font-semibold mb-4 text-gray-800 dark:text-white flex items-center gap-2">
                   <span className="bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 p-2 rounded-lg">
                     A-Z
                   </span>
                   Alphabet
                 </h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                   {filteredData.letters.map((item) => (
                     <div
                       key={item.char}
-                      className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                      className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-200"
                     >
                       <div className="text-center mb-3">
                         <div className="text-4xl font-bold text-gray-800 dark:text-white mb-2">
@@ -258,7 +258,7 @@ export default function MorseTablePage() {
                       <div className="flex justify-center gap-2">
                         <button
                           onClick={() => handleCopy(item.char, 'char')}
-                          className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                          className="p-2  bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition"
                           title="Copy character"
                         >
                           {copiedChar === `char-${item.char}` ? (
@@ -269,7 +269,7 @@ export default function MorseTablePage() {
                         </button>
                         <button
                           onClick={() => handleCopy(item.morse, 'morse')}
-                          className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                          className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition"
                           title="Copy Morse code"
                         >
                           {copiedChar === `morse-${item.char}` ? (
@@ -280,14 +280,14 @@ export default function MorseTablePage() {
                         </button>
                         <button
                           onClick={() => handleSpeak(item.pronunciation)}
-                          className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                          className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition"
                           title="Pronounce"
                         >
                           <Volume2 size={16} />
                         </button>
                         <button
                           onClick={() => playMorseSound(item.morse)}
-                          className="p-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                          className="p-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition"
                           title="Play Morse sound"
                         >
                           <Radio size={16} />
@@ -301,8 +301,8 @@ export default function MorseTablePage() {
 
             {/* Numbers */}
             {filteredData.numbers.length > 0 && (
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white flex items-center gap-2">
+              <div className="mb-10">
+                <h2 className="text-xl md:text-2xl font-semibold mb-4 text-gray-800 dark:text-white flex items-center gap-2">
                   <span className="bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-400 p-2 rounded-lg">
                     0-9
                   </span>
@@ -325,13 +325,13 @@ export default function MorseTablePage() {
                       <div className="flex justify-center gap-2 mt-3">
                         <button
                           onClick={() => handleCopy(item.char, 'char')}
-                          className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                          className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition"
                         >
                           <Copy size={14} />
                         </button>
                         <button
                           onClick={() => playMorseSound(item.morse)}
-                          className="p-2 bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-400 rounded-lg hover:bg-green-200 dark:hover:bg-green-800 transition-colors"
+                          className="p-2 bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-400 rounded-lg hover:bg-green-200 dark:hover:bg-green-800 transition"
                         >
                           <Radio size={14} />
                         </button>
@@ -344,8 +344,8 @@ export default function MorseTablePage() {
 
             {/* Punctuation */}
             {filteredData.punctuation.length > 0 && (
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white flex items-center gap-2">
+              <div className="mb-10">
+                <h2 className="text-xl md:text-2xl font-semibold mb-4 text-gray-800 dark:text-white flex items-center gap-2">
                   <span className="bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 p-2 rounded-lg">
                     !?#&
                   </span>
@@ -377,7 +377,7 @@ export default function MorseTablePage() {
             {/* Prosigns */}
             {filteredData.prosigns.length > 0 && (
               <div>
-                <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white flex items-center gap-2">
+                <h2 className="text-xl md:text-2xl font-semibold mb-4 text-gray-800 dark:text-white flex items-center gap-2">
                   <span className="bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-400 p-2 rounded-lg">
                     ⚡
                   </span>
@@ -403,7 +403,7 @@ export default function MorseTablePage() {
                         </div>
                         <button
                           onClick={() => playMorseSound(item.morse)}
-                          className="p-2 bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-200 dark:hover:bg-red-800 transition-colors"
+                          className="p-2 bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-200 dark:hover:bg-red-800 transition"
                         >
                           <Radio size={16} />
                         </button>
@@ -416,7 +416,7 @@ export default function MorseTablePage() {
           </div>
 
           {/* Sidebar with Info and Timing */}
-          <div className="space-y-8">
+          <div className="space-y-8 lg:sticky lg:top-24 h-fit">
             {/* Morse Code Info Card */}
             <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-6 text-white shadow-2xl">
               <div className="flex items-center gap-3 mb-4">
@@ -515,7 +515,7 @@ export default function MorseTablePage() {
             <div className="flex gap-4">
               <Link
                 href="/"
-                className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg flex items-center gap-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg flex items-center gap-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
               >
                 <ChevronLeft size={16} />
                 Back to Text Tools
